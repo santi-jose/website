@@ -23,7 +23,7 @@ jobs:
           return script(github, context, username, team)
           
     # If user is team member: checks if the issue has required labels
-    - if: ${{ steps.check-team-membership.outputs.result == 'true' }}
+    - if: true
       name: Check Labels
       id: check-labels
       uses: actions/github-script@v9
