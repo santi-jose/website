@@ -139,7 +139,7 @@ async function assignedToAnotherIssue() {
       owner: context.repo.owner,
       repo: context.repo.repo,
       assignee: assignee
-    })).data;
+    })).data.filter(issue => !issue.pull_request);
 
     const otherIssues = [];
 
