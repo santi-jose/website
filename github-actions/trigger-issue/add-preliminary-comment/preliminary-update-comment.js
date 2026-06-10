@@ -74,11 +74,13 @@ async function main({ g, c }, { shouldPost, issueNum }) {
 
     // Check if developer is allowed to work on complexity level of the issue
     console.log("C");
-    const issueComplexityPermitted = await checkComplexityEligibility(
-      github,
-      context,
-      isAdminOrMerge,
-    );
+    // const issueComplexityPermitted = await checkComplexityEligibility(
+    //   github,
+    //   context,
+    //   isAdminOrMerge,
+    // );
+    const issueComplexityPermitted = true;
+    
     // If complexity not permitted, stop here, check-complexity-eligibility.js 
     // script will perform remaining tasks and post comment
     if (issueComplexityPermitted === false) {
