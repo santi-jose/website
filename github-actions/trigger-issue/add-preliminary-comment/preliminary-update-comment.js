@@ -133,6 +133,7 @@ async function memberOfAdminOrMergeTeam() {
  * @returns {Boolean} - return true if developer is assigned to another issue/s
  */
 async function assignedToAnotherIssue() {
+  console.log("DEBUG: queryIssueInfo calls removed.");
   try {
     // https://octokit.github.io/rest.js/v20/#issues-list-for-repo (default state: "open")
     const issues = (await github.rest.issues.listForRepo({
