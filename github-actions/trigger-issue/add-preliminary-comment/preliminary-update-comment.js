@@ -152,10 +152,12 @@ async function assignedToAnotherIssue() {
       const isPreWork = issue.labels.some(label => label.name === complexity0);
 
       // Check if it exists in "Emergent Request" Status
-      const inEmergentRequestStatus = (await queryIssueInfo(github, context, repoIssueNum)).statusName === EMERGENT_REQUEST;
-    
+      // const inEmergentRequestStatus = (await queryIssueInfo(github, context, repoIssueNum)).statusName === EMERGENT_REQUEST;
+      const inEmergentRequestStatus = false;
+      
       // Check if it exists in "New Issue Approval" Status
-      const inNewIssueApprovalStatus = (await queryIssueInfo(github, context, repoIssueNum)).statusName === NEW_ISSUE_APPROVAL;
+      // const inNewIssueApprovalStatus = (await queryIssueInfo(github, context, repoIssueNum)).statusName === NEW_ISSUE_APPROVAL;
+      const inNewIssueApprovalStatus = false;
     
       // Include the issue only if none of the conditions are met
       if(!(isAgendaIssue || isPreWork || inEmergentRequestStatus || inNewIssueApprovalStatus))
