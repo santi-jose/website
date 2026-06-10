@@ -112,7 +112,7 @@ async function main({ g, c }, { shouldPost, issueNum }) {
       console.log(' - change issue status to "New Issue Approval"');
     } else {
       // Otherwise, proceed with checks 
-      conosole.log("K");
+      console.log("K");
       const comment = await createComment('preliminary-update.md', issueNum);
       console.log("L");
       await postComment(issueNum, comment, github, context);
