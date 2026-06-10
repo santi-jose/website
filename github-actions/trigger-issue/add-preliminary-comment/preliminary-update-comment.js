@@ -63,14 +63,17 @@ async function main({ g, c }, { shouldPost, issueNum }) {
     }
     
     // Get the latest developer in case there are multiple assignees
+    console.log("A");
     assignee = await getLatestAssignee();
 
     // Check if developer is allowed to work on this issue
     // const isAdminOrMerge = await memberOfAdminOrMergeTeam();
     const isAdminOrMerge = false; // testing 8634-5
+    console.log("B");
     const isAssignedToAnotherIssue = await assignedToAnotherIssue();
 
     // Check if developer is allowed to work on complexity level of the issue
+    console.log("C");
     const issueComplexityPermitted = await checkComplexityEligibility(
       github,
       context,
@@ -82,20 +85,27 @@ async function main({ g, c }, { shouldPost, issueNum }) {
       console.log("Issue of this complexity is not permitted.");
       return;
     }
+    console.log("D");
 
     // If developer is not in Admin or Merge Teams and assigned to another issue/s, do the following:
     if(!isAdminOrMerge && isAssignedToAnotherIssue) {
+      console.log("E");
       const comment = await createComment('multiple-issue-reminder.md', issueNum);
+      console.log("F");
       await postComment(issueNum, comment, github, context);
       console.log(' - add `multiple-issue-reminder.md` comment to issue');
 
+      console.log("G");
       await unAssignDev();
+      console.log("H");
       await addLabel(statusUnassignedByBot);
       console.log(' - remove developer and add label for re-prioritization');
 
       // Update item's status to "New Issue Approval"
       let statusValue = statusFieldIds('New_Issue_Approval');
+      console.log("I");
       const itemInfo = await queryIssueInfo(github, context, issueNum);
+      console.log("J", itemInfo);
       await mutateIssueStatus(github, context, itemInfo.id, statusValue);
       console.log(' - change issue status to "New Issue Approval"');
     } else {
