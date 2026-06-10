@@ -113,7 +113,8 @@ async function main({ g, c }, { shouldPost, issueNum }) {
     } else {
       // Otherwise, proceed with checks 
       console.log("K");
-      const comment = await createComment('preliminary-update.md', issueNum);
+      // const comment = await createComment('preliminary-update.md', issueNum);
+      const comment = "This is my test comment, does it work?";
       console.log("L");
       await postComment(issueNum, comment, github, context);
       console.log("M");
